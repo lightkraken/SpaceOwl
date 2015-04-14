@@ -1,4 +1,4 @@
-# SpaceOwl
+# Space Owl
 A vision therapy game to help those with binocular vision problems.
 
 Red/green or red/blue anaglyph glasses are required to play.
