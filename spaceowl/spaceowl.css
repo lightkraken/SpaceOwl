@@ -1,0 +1,362 @@
+/* 
+0 canvas background / also used for main menu & options menu backgrounds
+2 canvas player and enemies
+3 canvas effects
+4 html combobar stuff
+6 canvas pause
+8 html everything else
+*/
+
+body {
+	background-color: rgb(63,63,63);
+	font-family: "Lucida Console", Monaco, monospace;
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+	
+}
+
+#container {  
+	width: 800px;
+	height: 600px;
+	margin: 0 auto;
+	position: relative;
+}
+
+canvas {
+    position: absolute;
+}
+
+#cavas0 {z-index: 0;}
+#canvas1 {z-index: 2;}
+#canvas2 {z-index: 3;}
+#canvas3 {z-index: 6;}
+
+button {
+	width: 200px;
+	height: 50px;	
+	
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 20px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: white;
+	background-color: rgb(32,32,32);
+	display: block;
+	border: solid 3px white;
+	outline-offset: 3px;
+}
+
+button:hover {
+	outline: 3px solid white;
+/* 	background-color: darkgray !important; */
+}
+
+select {
+	font-weight: bold;
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size: 20px;	
+}
+
+.menu {
+	z-index: 8;
+	position: relative;
+	display: none;
+}
+
+.bgblack { background-color: black;}
+.bggray { background-color: rgb(127,127,127);}
+.fgred {color: rgb(255,0,0);}
+.fgblue {color: rgb(0,0,255);}
+.fgpurple {color: rgb(127,0,127);}
+.fgteal {color: rgb(0,100,100);}
+
+/*-----------------------------------------------------------------*/
+
+#loading p{
+	margin: 0px;
+	text-align: center;
+}
+
+#loading div{
+	height: 250px;
+}
+
+/*----------------------------------------------------------------*/
+
+#main_menu {
+	margin: 0 auto;
+}
+
+#main_menu div {
+	height: 59px;
+}
+
+#main_menu img {
+	display: block;
+	margin: 0px auto 73px auto;
+}
+
+#main_menu button {
+	display: block;
+	margin: 0px auto 16px auto;
+}
+
+/*---------------------------------------------------------------*/
+
+#pause_menu {
+	width: 350px;
+	height: 176px;
+	top: 212px;
+	left: 225px;
+	background: rgb(32,32,32);
+	border: 3px solid white;
+	position: absolute !important;
+}
+
+#pause_menu div {
+	height: 32px;
+}
+
+#pause_menu button {
+	margin: 0px auto 16px auto;
+	background: black;
+}
+
+/*-------------------------------------------------------------------*/
+
+#end_menu {
+	width: 350px;
+	left: 225px;
+	top: 100px;
+	background: rgb(32,32,32);
+	border: 3px solid white;
+	position: absolute !important;
+	text-align: center;
+}
+
+#end_menu p {
+	margin: 0px 0px 12px 0px;
+}
+
+#end_menu button {
+	background: black;
+}
+
+#againbutton {
+	margin: 24px auto 0px auto;
+}
+
+#quit2button {
+	margin: 16px auto 24px auto;
+}
+
+#end_menu_p1 {
+	font-size: 30px;
+	margin: 24px 0px 24px 0px !important;
+}
+
+#end_menu div {
+	display: inline-block;
+	text-align: left;
+}
+
+/* ------------------------------------------------------- */
+
+#options_menu {
+	width: 800px;
+	height: 600px;
+	top: 0;
+	left: 0;
+}
+
+#optionsmargin {
+	height: 33px;
+}
+
+#firstrow {
+	width: 315px;
+	margin: 0px auto 12px auto;
+}
+
+#length {
+	margin-right: 13px;
+}
+
+#length, #speed {
+	display: inline-block;
+	background-color: rgb(32,32,32);
+	padding: 6px 18px 9px 18px;
+	width: 115px;
+}
+
+#palette, #lens, #sound {
+	width: 291px;
+	background-color : rgb(32,32,32);
+	margin: 0px auto 12px auto;
+	padding: 6px 6px 9px 18px;
+}
+
+#options_menu button {
+	margin: 30px auto 0px auto;
+}
+
+#options_menu p {
+	font-size: 30px;
+	margin: 6px 0 9px 0;
+}
+
+#options_menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+#palette li:first-child {
+	margin: 0 0 6px 0;
+}
+
+/* ------------------------------------------------------ */
+
+#calibrate_menu {
+	height: 600px;
+	width: 800px;
+	top: 0;
+	left: 0;
+	text-align: center;
+}
+
+#calibrate_menu div {
+	height: 213px;
+}
+
+#calibrate_menu button {
+	margin: 0px auto 16px auto;
+}
+
+/*--------------------------------------------------------*/
+
+.calibmenu {
+	height: 600px;
+	width: 800px;
+	top: 0;
+	left: 0;
+	text-align: center;
+}
+
+.calsquare {
+	position: relative;
+	display: inline-block;
+	width: 600px;
+	top: 90px;
+	background-color: rgb(32,32,32);
+	text-align: center;
+}
+
+.calsquare div {
+	height: 30px;
+}
+
+.calsquare p:nth-child(2) {
+	margin: 0px 0px 3px 0px;
+}
+
+.calsquare p:nth-child(3) {
+	margin: 0px 0px 30px 0px;
+}
+
+.calsquare canvas {
+	position: static;
+	border: 3px solid white;
+	margin: 0px 0px 9px 9px;
+}
+
+.calsquare input {
+	width: 406px;
+	margin: 0px auto 24px auto;
+}
+
+.calsquare button {
+	margin: 0px auto 24px auto;
+	background: black;
+}
+
+#rb1 span, #pt1 span {
+	background-color: rgb(255,0,0);
+}
+
+#rb2 span, #pt2 span {
+	background-color: rgb(0,0,255);
+}
+
+/*----------------------------------------------------------------*/
+
+#instructions_margin {
+	height: 20px;
+}
+
+#instructions_inner {
+	font-weight: normal;
+	font-size: 16px;	
+	width: 760px;
+	height: 490px;
+	margin: 0px auto;
+	overflow: auto;
+}
+
+#instructions button {
+	margin: 20px auto 0px auto;
+}
+
+
+
+/*----------------------------------------------------------------*/
+
+#combocontainer {
+	position: relative;
+	z-index: 4;
+	top: 0px;
+	left: 0px;
+	display: none;
+}
+
+#combometer {
+	border: 3px solid;
+	margin: 23px 0px 0px 6px;
+	padding: 6px;
+	display: inline-block;
+}
+
+.combodiv {
+	height: 18px;
+	width: 24px;
+	float: left;
+}
+
+#score {
+	position: relative;
+	display: inline-block;	
+	border: 3px solid;
+	font-size: 24px;
+	margin-left: 20px;
+	margin-top: 20px;
+	vertical-align: top;
+	height: 24px;
+	padding: 6px;
+	font-weight: bold;
+	line-height: 24px;
+}
+
+#countdown {
+	display: none;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border: 3px white solid;
+	font-size: 24px;
+	font-weight: bold;
+	z-index: 4;
+	height: 24px;
+	padding: 6px;
+	line-height: 24px;
+}

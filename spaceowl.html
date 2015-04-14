@@ -1,0 +1,197 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link rel="stylesheet" href="/spaceowl/spaceowl.css">
+		<script src="/spaceowl/audio-fx.js"></script>
+		<script src="/spaceowl/game.js"></script>	
+		<title>Space Owl</title>
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+			ga('create', 'UA-54385001-1', 'auto');
+			ga('send', 'pageview');
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<canvas id="canvas0" width=800 height=600></canvas>
+			<canvas id="canvas1" width=800 height=600></canvas>
+			<canvas id="canvas2" width=800 height=600></canvas>
+			<canvas id="canvas3" width=800 height=600></canvas>
+			<div id="loading" class="menu">
+				<div></div>
+				<p>Loading...</p>
+			</div>
+			<div id="main_menu" class="menu">
+				<div></div>
+				<img src="/spaceowl/bg.png">
+				<button id="startbutton" type="button">Start</button>
+				<button id="optionsbutton" type="button">Options</button>
+				<button id="calibratebutton" type="button">Calibrate Colors</button>
+				<button id="instructionsbutton" type="button">Instructions</button>
+			</div>
+			<div id="options_menu" class="menu">
+				<div id="optionsmargin"></div>
+				<div id="firstrow">
+					<div id="length">
+						<p>Time</p>
+						<select id="lengthdropdown">
+							<option value=60>1 min</option>
+							<option value=120>2 min</option>
+							<option value=180>3 min</option>
+							<option value=240>4 min</option>
+							<option value=300>5 min</option>
+							<option value=360>6 min</option>
+							<option value=420>7 min</option>
+							<option value=480>8 min</option>
+							<option value=540>9 min</option>
+							<option value=600>10 min</option>						
+						</select>
+					</div
+					><div id="speed">
+							<p>Speed</p>
+							<select id="speeddropdown">
+								<option value=1>&nbsp;1&nbsp;</option>
+								<option value=2>&nbsp;2&nbsp;</option>
+								<option value=3>&nbsp;3&nbsp;</option>
+								<option value=4>&nbsp;4&nbsp;</option>
+								<option value=5>&nbsp;5&nbsp;</option>
+								<option value=6>&nbsp;6&nbsp;</option>
+								<option value=7>&nbsp;7&nbsp;</option>
+								<option value=8>&nbsp;8&nbsp;</option>
+								<option value=9>&nbsp;9&nbsp;</option>
+								<option value=10>&nbsp;10&nbsp;</option>
+							</select>
+					</div>
+				</div>
+				<div id="sound">
+						<p>Sound</p>
+						<ul>
+						<li><input id="radio_sound_on" type="radio" name="sounds" value="ON">On</input></li>
+						<li><input id="radio_sound_off" type="radio" name="sounds" value="OFF">Off</input></li>
+						</ul>				
+				</div>				
+				<div id="palette">
+					<p>Palette</p>
+					<ul>
+					<li><input id="radio_palette_rb" type="radio" name="palette" value="REDBLUE"><span class="bgblack"><span class="fgred">&nbsp;Red</span> <span class="fgblue">Blue&nbsp;</span></span></input></li>
+					<li><input id="radio_palette_pt" type="radio" name="palette" value="PURPTEAL"><span class="bggray"><span class="fgpurple">&nbsp;Purple</span> <span class="fgteal">Teal&nbsp;</span></span></input></li>
+					</ul>
+				</div>
+				<div id="lens">
+						<p>Lens</p>
+						<ul>
+						<li><input id="radio_lens_both" type="radio" name="lenses" value="BOTH">Binocular</input></li>
+						<li><input id="radio_lens_red" type="radio" name="lenses" value="RED">Red Lens Only</input></li>
+						<li><input id="radio_lens_blue" type="radio" name="lenses" value="BLUE">Blue\Green Lens Only</input></li>
+						</ul>
+					</div>
+				<button id="backmenu" type="button">Back</button>
+			</div>
+			<div id="calibrate_menu" class="menu">
+				<div></div>
+				<button id="calrb" type="button"><span class="bgblack"><span class="fgred">&nbsp;Red</span> <span class="fgblue">Blue&nbsp;</span></span></button>
+				<button id="calpt" type="button"><span class="bggray"><span class="fgpurple">&nbsp;Purple</span> <span class="fgteal">Teal&nbsp;</span></span></button>
+				<button id="backmenu2" type="button">Back</button>
+			</div>
+			<div id="rb1" class="menu calibmenu">
+				<div class="calsquare">
+					<div></div>					
+					<p>Look through the <span>&nbsp;RED&nbsp;</span> lens.</p>
+					<p>Adjust the slider until the squares disappear.</p>
+					<canvas id="rb1sq" width=400 height=72></canvas>
+					<input id="rb1slider" type="range" min=0 max=127 value=127 step=1></input>
+					<button id="rbnext" type="button">Next</button>
+				</div>
+			</div>
+			<div id="rb2" class="menu calibmenu">
+				<div class="calsquare">
+					<div></div>	
+					<p>Look through the <span>&nbsp;BLUE\GREEN&nbsp;</span> lens.</p>
+					<p>Adjust the slider until the squares disappear.</p>
+					<canvas id="rb2sq" width=400 height=72></canvas>
+					<input id="rb2slider" type="range" min=0 max=255 value=255 step=1></input>
+					<button id="rbfinished" type="button">Finished</button>
+				</div>
+			</div>
+			<div id="pt1" class="menu calibmenu">
+				<div class="calsquare">
+					<div></div>
+					<p>Look through the <span>&nbsp;RED&nbsp;</span> lens.</p>
+					<p>Adjust the slider until the squares disappear.</p>
+					<canvas id="pt1sq" width=400 height=72></canvas>
+					<input id="pt1slider" type="range" min=0 max=255 value=255 step=1></input>
+					<button id="pt1next" type="button">Next</button>
+				</div>
+			</div>
+			<div id="pt2" class="menu calibmenu">
+				<div class="calsquare">
+					<div></div>
+					<p>Look through the <span>&nbsp;BLUE\GREEN&nbsp;</span> lens.</p>
+					<p>Adjust the slider until the squares disappear.</p>
+					<canvas id="pt2sq" width=400 height=72></canvas>
+					<input id="pt2slider" type="range" min=0 max=255 value=255 step=1></input>
+					<button id="ptfinished" type="button">Finished</button>
+				</div>
+			</div>			
+			<div id="combocontainer">
+				<div id="score"></div
+				><div id="combometer"></div>
+			</div>
+			<div id="countdown"></div>
+			<div id="pause_menu" class="menu">
+				<div></div>
+				<button id="continuebutton" type="button">Resume</button>
+				<button id="quitbutton" type="button">Quit</button>
+			</div>
+			<div id="end_menu" class="menu">
+				<p id="end_menu_p1">G A M E&nbsp;&nbsp;O V E R</p>
+				<div>
+					<p>Score&nbsp;:&nbsp;<span id="finalscore"></span></p>				
+					<p>Speed&nbsp;:&nbsp;<span id="finalspeed"></span></p>
+					<p>Time&nbsp;&nbsp;:&nbsp;<span id="finallength"></span></p>
+				</div>
+				<button id="againbutton" type="button">Play Again</button>
+				<button id="quit2button" type="button">Quit</button>
+			</div>
+			<div id="instructions" class="menu">
+				<div id="instructions_margin"></div>
+				<div id="instructions_inner">
+					<p>This application should only be used under the supervision of a vision therapy professional.</p>
+					<p>To play this game, you will need red/blue or red/green vision therapy glasses.</p>
+					<p><b>First time players</b></p>
+					<ul>
+					<li>Calibrate Colors, for both Red/Blue and Purple/Teal palettes. This adjusts the game palettes to your specific computer monitor and colored glasses.</li>
+					</ul>
+					<p><b>Options</b></p>
+					<ul>
+					<li>This game can be played using the Red/Blue color palette or the Purple/Teal color palette. Try both and see which you prefer.</li>
+					<li>Work with your vision therapist to determine your appropriate game speed and game length.</li>
+					<li>Work with your vision therapist to determine whether you should play using the binocular (two-lens) or monocular (single-lens) option.</li>
+					</ul>
+					<p><b>Gameplay</b></p>
+					<ul>
+					<li>Use the arrow keys to move.</li>
+					<li>Collect Gems. Each Gem you collect increases the Combo-Meter by 1.</li>
+					<li>When the Combo-Meter is full, you gain 1 Point and a special Combo happens.</li> 
+					<li>Avoid Monsters. When you touch a Monster, the Combo-Meter is reduced by 1.</li>
+					<li>Press the Escape key to pause or exit the game.</li>
+					</u>
+				</div>
+				<button id="backmenu3" type="button">Back</button> 
+			</div>
+		</div>
+	
+		<script>
+			var KEY = new utilities.Key();
+			window.addEventListener('keydown', (function(event) {KEY.on_down(event);}).bind(this), false);
+			window.addEventListener('keyup', (function(event) {KEY.on_up(event);}).bind(this), false);
+
+			game.start();		
+		</script>
+	
+	</body>
+</html>
