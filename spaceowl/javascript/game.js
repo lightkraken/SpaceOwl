@@ -154,7 +154,7 @@ var graphics = {
 	
 	load_assets : function(callback) {
 		this.callback = callback;
-		this.sprite_sheet.src = "/spaceowl/spritesheet.png";
+		this.sprite_sheet.src = "images/spritesheet.png";
 		this.sprite_sheet.onload = this.on_load_callback.bind(this);
 	},	
 	
@@ -171,12 +171,12 @@ var graphics = {
 		this.sounds = {};
 		this.load_countdown = 6;
 		
-		this.sounds.combo1 = AudioFX('/spaceowl/combo1', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
-		this.sounds.combo2 = AudioFX('/spaceowl/combo2', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
-		this.sounds.combo3 = AudioFX('/spaceowl/combo3', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
-		this.sounds.combo4 = AudioFX('/spaceowl/combo4', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
-		this.sounds.ouch   = AudioFX('/spaceowl/ouch'  , { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));	
-		this.sounds.gem    = AudioFX('/spaceowl/gem'   , { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
+		this.sounds.combo1 = AudioFX('sounds/combo1', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
+		this.sounds.combo2 = AudioFX('sounds/combo2', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
+		this.sounds.combo3 = AudioFX('sounds/combo3', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
+		this.sounds.combo4 = AudioFX('sounds/combo4', { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
+		this.sounds.ouch   = AudioFX('sounds/ouch'  , { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));	
+		this.sounds.gem    = AudioFX('sounds/gem'   , { formats: ['ogg','mp3'], pool: 2 }, this.load_sounds_callback.bind(this));
 	},
 
 	sound_volume : function(onoff) {
